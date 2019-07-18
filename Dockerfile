@@ -1,4 +1,4 @@
-FROM python:laste
+FROM python:latest
 Maintainer hulb@live.cn
 
 RUN wget https://github.com/hulb/CuteOne/archive/v1.0.tar.gz v1.0.tar.gz && tar -zxf v1.0.tar.gz && cd CuteOne-1.0
