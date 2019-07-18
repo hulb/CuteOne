@@ -4,7 +4,7 @@ services:
     container_name: cuteone
     image: hulb/cuteone:latest
     ports:
-      - 5700:80
+      - 5000:5000
     links:
       - mysql
       - mongo
