@@ -1,0 +1,27 @@
+version: '2'
+services:
+  web:
+    container_name: cuteone
+    image: hulb/cuteone:latest
+    ports:
+      - 5700:80
+    links:
+      - mysql
+      - mongo
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=cuteone
+      - MYSQL_ROOT_PASSWORD=cuteone
+      - MYSQL_USER=cuteone
+    volumes:
+      - /root/cuteone/mysql:/var/lib/mysql
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cuteone
+      - MONGO_INITDB_ROOT_PASSWORD=cuteone
+    volumes:
+      - /root/cuteone/mongo:/data/db
