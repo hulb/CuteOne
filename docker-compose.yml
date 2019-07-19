@@ -6,22 +6,20 @@ services:
     ports:
       - 5000:5000
     links:
-      - mysql
-      - mongo
+      - mysql:mysql
+      - mongo:mongo
   mysql:
     container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
     image: mysql:latest
     environment:
       - MYSQL_DATABASE=cuteone
       - MYSQL_ROOT_PASSWORD=cuteone
-      - MYSQL_USER=cuteone
+      - MYSQL_USER=root
     volumes:
       - /root/cuteone/mysql:/var/lib/mysql
   mongo:
     container_name: mongo
     image: mongo:latest
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=cuteone
-      - MONGO_INITDB_ROOT_PASSWORD=cuteone
     volumes:
       - /root/cuteone/mongo:/data/db
