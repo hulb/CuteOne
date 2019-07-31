@@ -154,7 +154,7 @@ def disk_edit(drive_id, id):
         if id != '0':
             if code:
                 url = config.BaseAuthUrl + '/common/oauth2/v2.0/token'
-                redirect_url = "http://127.0.0.1/"
+                redirect_url = "http://localhost:30662/"
                 AuthData = 'client_id={client_id}&redirect_uri={redirect_uri}&client_secret={client_secret}&code={code}&grant_type=authorization_code'
                 data = AuthData.format(client_id=client_id, redirect_uri=redirect_url, client_secret=client_secret,
                                        code=code)
@@ -176,7 +176,7 @@ def disk_edit(drive_id, id):
                 return json.dumps({"code": 0, "msg": "完成！"})
         else:
             url = config.BaseAuthUrl + '/common/oauth2/v2.0/token'
-            redirect_url = "http://127.0.0.1/"
+            redirect_url = "http://localhost:30662/"
             AuthData = 'client_id={client_id}&redirect_uri={redirect_uri}&client_secret={client_secret}&code={code}&grant_type=authorization_code'
             data = AuthData.format(client_id=client_id, redirect_uri=redirect_url, client_secret=client_secret, code=code)
             headers = {

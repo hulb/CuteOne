@@ -64,7 +64,7 @@ def files_disk_edit(id):
             models.filesDisk.update({"id": id, "title": title, "client_id": client_id, "client_secret": client_secret, "description":description})
         else:
             url = config.BaseAuthUrl + '/common/oauth2/v2.0/token'
-            redirect_url = "http://127.0.0.1/"
+            redirect_url = "http://localhost:30662/"
             AuthData = 'client_id={client_id}&redirect_uri={redirect_uri}&client_secret={client_secret}&code={code}&grant_type=authorization_code'
             data = AuthData.format(client_id=client_id, redirect_uri=redirect_url, client_secret=client_secret, code=code)
             headers = {

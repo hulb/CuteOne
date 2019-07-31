@@ -54,7 +54,7 @@ def get_users_files_list(uid, page="1", limit="50"):
 def reacquireToken(id):
     data_list = filesModels.filesDisk.find_by_id(id)
     token = json.loads(json.loads(data_list.token))
-    redirect_url = "http://127.0.0.1/"
+    redirect_url = "http://localhost:30662/"
     ReFreshData = 'client_id={client_id}&redirect_uri={redirect_uri}&client_secret={client_secret}&refresh_token={refresh_token}&grant_type=refresh_token'
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     data = ReFreshData.format(client_id = data_list.client_id, redirect_uri = redirect_url, client_secret = data_list.client_secret,
