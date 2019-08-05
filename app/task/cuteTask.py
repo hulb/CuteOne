@@ -91,12 +91,12 @@ def task_write(id, data, type):
             "id": data["id"],
             "parentReference": data["parentReference"]["id"],
             "name": data["name"],
-            "file": data["file"]["mimeType"],
+            "file": data.get("file", {}).get("mimeType", "text/plain"),
             "path": data["parentReference"]["path"].replace("/drive/root:", ""),
             "size": data["size"],
             "createdDateTime": common.utc_to_local(data["fileSystemInfo"]["createdDateTime"]),
             "lastModifiedDateTime": common.utc_to_local(data["fileSystemInfo"]["lastModifiedDateTime"]),
-            "downloadUrl": data["@microsoft.graph.downloadUrl"],
+            "downloadUrl": data.get("@microsoft.graph.downloadUrl", ""),
             "timeout": int(time.time()) + 300
         }
         collection.insert_one(dic)

@@ -10,6 +10,7 @@ from ..drive import logic
 from ..task import models as taskModels
 from ..menu import models as menuModels
 from app import common
+import urllib
 
 
 @admin.route('/drive/list', methods=['GET'])
@@ -156,7 +157,7 @@ def disk_edit(drive_id, id):
                 url = config.BaseAuthUrl + '/common/oauth2/v2.0/token'
                 redirect_url = "http://localhost:30662/"
                 AuthData = 'client_id={client_id}&redirect_uri={redirect_uri}&client_secret={client_secret}&code={code}&grant_type=authorization_code'
-                data = AuthData.format(client_id=client_id, redirect_uri=redirect_url, client_secret=client_secret,
+                data = AuthData.format(client_id=client_id, redirect_uri=urllib.quote(redirect_url), client_secret=urllib.quote(client_secret),
                                        code=code)
                 headers = {
                     'Content-Type': 'application/x-www-form-urlencoded',
